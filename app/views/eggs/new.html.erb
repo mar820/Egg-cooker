@@ -1,0 +1,10 @@
+<%= form_with(model: @egg, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :size %>
+    <%= form.select :size, ['Small', 'Medium', 'Large'] %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,8 @@
+<% if @room_temp.present? %>
+      <%= image_tag 'room.png', class: 'temp-image' %>
+    <% end %>
+
+    <% if @fridge_temp.present? %>
+      <%= image_tag 'fridge.png', class: 'temp-image' %>
+    <% end %>
+  </div>

@@ -1,0 +1,68 @@
+.main-container {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.secondary-container {
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 1px 3px 3px 3px rgb(163, 163, 163);
+}
+
+.choose-desired-egg-size {
+  display: flex;
+  justify-content: space-between;
+  width: 750px;
+}
+
+.egg-size {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+.size-text-container {
+  display: flex;
+  justify-content: space-between;
+  width: 590px;
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: 50px;
+  margin-left: 75px;
+}
+
+.highlighted {
+  border: 2px solid red;
+}
+
+
+.text-for-temperature-container {
+  display: flex;
+  justify-content: space-between;
+  width: 580px;
+  margin: 40px auto;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.choose-temperature-of-egg {
+  display: flex;
+  justify-content: space-between;
+  width: 550px;
+
+  img {
+    width: 200px;
+    height: 200px;
+    border-radius: 30%;
+    background-size:cover ;
+  }
+}

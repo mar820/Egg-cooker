@@ -1,0 +1,5 @@
+<%= form_with(model: @temperature, local: true) do |form| %>
+    <%= form.select :room_temp, ['room_temp'] %>
+    <%= form.select :fridge_temp, ['fridge_temp'] %>
+    <%= form.submit %>
+<% end %>

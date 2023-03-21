@@ -1,0 +1,91 @@
+<!--
+<div class="main-container">
+  <div class="choose-egg-size-text-container">
+    <h1>Choose your desired size.</h1>
+  </div>
+  <div class="secondary-container">
+    <div class="size-text-container">
+      <div class="size-text small">Small</div>
+      <div class="size-text medium">Medium</div>
+      <div class="size-text large">Large</div>
+    </div>
+    <div class="choose-desired-egg-size">
+      <% @eggs.each do |egg| %>
+        <div class="egg-size">
+          <div class="size-image">
+            <% if egg.size == 'Small' %>
+              <%= image_tag 'egg.png', class: 'egg-image' %>
+            <% elsif egg.size == 'Medium' %>
+              <%= image_tag 'egg.png', class: 'egg-image' %>
+            <% elsif egg.size == 'Large' %>
+              <%= image_tag 'egg.png', class: 'egg-image'%>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="text-for-temperature-container">
+    <div class="text-for-temperature">Room temperature</div>
+    <div class="text-for-temperature">Fridge temperature</div>
+  </div>
+
+  <div class="choose-temperature-of-egg">
+
+    <% if @room_temp %>
+      <%= image_tag 'room.png', class: 'temp-image' %>
+    <% end %>
+
+    <% if @fridge_temp.present? %>
+      <%= image_tag 'fridge.png', class: 'temp-image' %>
+    <% end %>
+  </div>
+
+  <div class="boiling-point-container">
+
+</div>
+
+
+
+
+
+<script>
+  let eggImages = document.querySelectorAll('.egg-image');
+  let selectedImage = null;
+
+  eggImages.forEach(function(image) {
+    image.addEventListener('click', function() {
+      if (this === selectedImage) {
+        this.classList.remove('highlighted');
+        selectedImage = null;
+      } else {
+        eggImages.forEach(function(image) {
+          image.classList.remove('highlighted');
+        });
+
+        this.classList.add('highlighted');
+        selectedImage = this;
+      }
+    });
+  });
+
+
+  let temperatureImage = document.querySelectorAll(".temp-image")
+  let selectedImagee = null;
+
+  temperatureImage.forEach(function(image) {
+    image.addEventListener("click", function() {
+      if (this === selectedImagee) {
+        this.classList.remove('highlighted')
+        selectedImagee = null;
+      } else {
+        temperatureImage.forEach(function(image)  {
+          image.classList.remove('highlighted')
+        });
+
+        this.classList.add('highlighted');
+        selectedImage = this;
+      }
+    });
+  });
+</script>
