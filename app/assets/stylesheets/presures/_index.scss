@@ -1,0 +1,12 @@
+.image-athmospheric-presure-container {
+  display: flex;
+  justify-content: space-between;
+  width: 750px;
+
+  img {
+    width: 350px;
+    height: 380px;
+    border-radius: 20%;
+    background-size:cover ;
+  }
+}

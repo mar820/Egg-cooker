@@ -1,0 +1,9 @@
+<%= form_with(model: @presure) do |f|%>
+  <%= f.label :sea_level %>
+  <%= f.text_field :sea_level %>
+
+  <%= f.label :altitude %>
+  <%= f.text_field :altitude %>
+
+  <%= f.submit %>
+<% end %>

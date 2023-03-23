@@ -1,7 +1,9 @@
 class TemperaturesController < ApplicationController
 
   def index
-    @temperatures = Temperature.all
+    @temperatures = Temperature.last
+    @room_temp = @temperatures.room_temp
+    @fridge_temp = @temperatures.fridge_temp
   end
 
   def show

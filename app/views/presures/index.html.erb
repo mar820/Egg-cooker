@@ -1,0 +1,17 @@
+<div class="main-container">
+  <div class="boiling-point-container">
+    <div class="text-for-temperature-container">
+      <div class="text-for-temperature">Sea Level</div>
+      <div class="text-for-temperature">Altitude</div>
+    </div>
+
+    <div class="image-athmospheric-presure-container">
+      <% if @sea_level %>
+        <%= image_tag 'sea-level.png', class: "atm_presure-image" %>
+      <% end %>
+      <% if @altitude %>
+        <%= image_tag 'altitude.png', class: "atm_presure-image" %>
+      <% end %>
+    </div>
+  </div>
+</div>

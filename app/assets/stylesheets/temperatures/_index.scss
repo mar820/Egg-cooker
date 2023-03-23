@@ -1,0 +1,29 @@
+.text-for-temperature-container {
+  display: flex;
+  justify-content: space-between;
+  width: 690px;
+  margin: 40px auto;
+  font-size: 25px;
+  font-weight: 500;
+
+  .text-for-temperature{
+    padding-right: 15px;
+  }
+}
+
+.choose-temperature-of-egg {
+  display: flex;
+  justify-content: space-between;
+  width: 750px;
+
+  img {
+    width: 350px;
+    height: 380px;
+    border-radius: 20%;
+    background-size:cover ;
+  }
+}
+
+.temperature-section-container {
+  text-align: center;
+}

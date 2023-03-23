@@ -1,0 +1,2 @@
+class Presure < ApplicationRecord
+end

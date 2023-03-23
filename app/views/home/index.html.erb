@@ -1,51 +1,47 @@
-<%# <h1>Welcome to the Egg cooker</h1> %>
-
-<%# <%= link_to "Let's boil an egg!", eggs_path %>
 
 <div class="main-container">
-  <div class="choose-egg-size-text-container">
-    <h1>Choose your desired size.</h1>
+  <div class="welcome-egg-text-container" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= image_path 'backgrounddd.png' %>')">
+    <h1>Welcome to the Egg Cooker!</h1>
   </div>
-  <div class="secondary-container">
-    <div class="size-text-container">
-      <div class="size-text small">Small</div>
-      <div class="size-text medium">Medium</div>
-      <div class="size-text large">Large</div>
+
+  <div class="how-it-works-text-container">
+    <h3>How it works</h3>
+  </div>
+  <div class="three-images-how-it-works-container">
+
+    <div class="first-image-how-it-works-container">
+      <img src="<%= image_path 'white-egg.png' %>" alt="">
+      <%# <div class="marketing-description-title">
+        <h3>Size</h3>
+      </div> %>
+      <div class="marketing-description-body">
+        <p>First, you'll need to select the size of the egg you're boiling. This is important because the size of the egg will affect how long it takes to boil. If you're not sure what size your egg is, you can usually find this information on the egg carton.</p>
+      </div>
     </div>
-    <div class="choose-desired-egg-size">
-      <% @eggs.each do |egg| %>
-        <div class="egg-size">
-          <div class="size-image">
-            <% if egg.size == 'Small' %>
-              <%= image_tag 'egg.png', class: 'egg-image' %>
-            <% elsif egg.size == 'Medium' %>
-              <%= image_tag 'egg.png', class: 'egg-image' %>
-            <% elsif egg.size == 'Large' %>
-              <%= image_tag 'egg.png', class: 'egg-image'%>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
+
+    <div class="second-image-how-it-works-container">
+      <img src="<%= image_path 'temp.png' %>" alt="">
+      <%# <div class="marketing-description-title">
+        <h3>Take our quiz</h3>
+      </div> %>
+      <div class="marketing-description-body">
+        <p>Next, you'll need to select the temperature of the egg you are going to boil. This step is crucial, as the temperature of the egg will determine how long it takes to boil the egg. If the egg is taken from a room temperature it will take less time to boil.</p>
+      </div>
+    </div>
+
+    <div class="third-image-how-it-works-container">
+      <img src="<%= image_path 'presure.png' %>" alt="">
+      <%# <div class="marketing-description-title">
+        <h3>Take our quiz</h3>
+      </div> %>
+      <div class="marketing-description-body">
+        <p>After selecting the temperature of the egg, the next step is to consider the atmospheric pressure at which you'll be cooking your egg. This may sound complicated, but don't worry – it simply means taking into account your altitude.</p>
+      </div>
     </div>
   </div>
-  <div class="text-for-temperature-container">
-    <div class="text-for-temperature">Room temperature</div>
-    <div class="text-for-temperature">Fridge temperature</div>
+  <div class="button-next-eggs-btn">
+    <%= link_to "Let's start", eggs_path, class:"btn btn-success" %>
   </div>
-
-  <div class="choose-temperature-of-egg">
-
-    <% if @room_temp %>
-      <%= image_tag 'room.png', class: 'temp-image' %>
-    <% end %>
-
-    <% if @fridge_temp.present? %>
-      <%= image_tag 'fridge.png', class: 'temp-image' %>
-    <% end %>
-  </div>
-
-  <div class="boiling-point-container">
-
 </div>
 
 
@@ -68,26 +64,6 @@
 
         this.classList.add('highlighted');
         selectedImage = this;
-      }
-    });
-  });
-
-
-  let temperatureImage = document.querySelectorAll(".temp-image")
-  let selectedImagee = null;
-
-  temperatureImage.forEach(function(image) {
-    image.addEventListener('click', function() {
-      if (this === selectedImagee) {
-        this.classList.remove('highlighted')
-        selectedImagee = null;
-      } else {
-        temperatureImage.forEach(function(image)  {
-          image.classList.remove('highlighted')
-        });
-
-        this.classList.add('highlighted');
-        selectedImagee = this;
       }
     });
   });

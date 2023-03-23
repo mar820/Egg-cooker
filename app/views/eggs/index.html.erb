@@ -1,3 +1,28 @@
+<div class="secondary-container">
+    <div class="size-text-container">
+      <div class="size-text small">Small</div>
+      <div class="size-text medium">Medium</div>
+      <div class="size-text large">Large</div>
+    </div>
+    <div class="choose-desired-egg-size">
+      <% @eggs.each do |egg| %>
+        <div class="egg-size">
+          <div class="size-image">
+            <% if egg.size == 'Small' %>
+              <%= image_tag 'egg.png', class: 'egg-image' %>
+            <% elsif egg.size == 'Medium' %>
+              <%= image_tag 'egg.png', class: 'egg-image' %>
+            <% elsif egg.size == 'Large' %>
+              <%= image_tag 'egg.png', class: 'egg-image'%>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+
 <!--
 <div class="main-container">
   <div class="choose-egg-size-text-container">

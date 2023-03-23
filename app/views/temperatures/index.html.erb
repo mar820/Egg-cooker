@@ -1,8 +1,39 @@
-<% if @room_temp.present? %>
-      <%= image_tag 'room.png', class: 'temp-image' %>
-    <% end %>
+<div class="main-container">
+  <div class="temperature-section-container">
+    <div class="text-for-temperature-container">
+      <div class="text-for-temperature">Room temperature</div>
+      <div class="text-for-temperature">Fridge temperature</div>
+    </div>
 
-    <% if @fridge_temp.present? %>
-      <%= image_tag 'fridge.png', class: 'temp-image' %>
-    <% end %>
+    <div class="choose-temperature-of-egg">
+      <% if @room_temp %>
+        <%= image_tag 'room.png', class: 'temp-image' %>
+      <% end %>
+
+      <% if @fridge_temp %>
+        <%= image_tag 'fridge.png', class: 'temp-image' %>
+      <% end %>
+    </div>
   </div>
+</div>
+
+<script>
+let temperatureImage = document.querySelectorAll(".temp-image")
+  let selectedImagee = null;
+
+  temperatureImage.forEach(function(image) {
+    image.addEventListener('click', function() {
+      if (this === selectedImagee) {
+        this.classList.remove('highlighted')
+        selectedImagee = null;
+      } else {
+        temperatureImage.forEach(function(image)  {
+          image.classList.remove('highlighted')
+        });
+
+        this.classList.add('highlighted');
+        selectedImagee = this;
+      }
+    });
+  });
+</script>
