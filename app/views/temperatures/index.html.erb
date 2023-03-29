@@ -16,24 +16,3 @@
     </div>
   </div>
 </div>
-
-<script>
-let temperatureImage = document.querySelectorAll(".temp-image")
-  let selectedImagee = null;
-
-  temperatureImage.forEach(function(image) {
-    image.addEventListener('click', function() {
-      if (this === selectedImagee) {
-        this.classList.remove('highlighted')
-        selectedImagee = null;
-      } else {
-        temperatureImage.forEach(function(image)  {
-          image.classList.remove('highlighted')
-        });
-
-        this.classList.add('highlighted');
-        selectedImagee = this;
-      }
-    });
-  });
-</script>

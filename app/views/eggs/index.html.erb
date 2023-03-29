@@ -1,116 +1,271 @@
-<div class="secondary-container">
-    <div class="size-text-container">
-      <div class="size-text small">Small</div>
-      <div class="size-text medium">Medium</div>
-      <div class="size-text large">Large</div>
-    </div>
-    <div class="choose-desired-egg-size">
-      <% @eggs.each do |egg| %>
-        <div class="egg-size">
-          <div class="size-image">
-            <% if egg.size == 'Small' %>
-              <%= image_tag 'egg.png', class: 'egg-image' %>
-            <% elsif egg.size == 'Medium' %>
-              <%= image_tag 'egg.png', class: 'egg-image' %>
-            <% elsif egg.size == 'Large' %>
-              <%= image_tag 'egg.png', class: 'egg-image'%>
-            <% end %>
+<div class="first-part-eggs-choices-container" class="d-none">
+  <div class="text-for-selecting-your-egg-size">
+    <h3>Start by selecting the size of your egg.</h3>
+  </div>
+  <div class="main-container-for-eggs">
+    <div class="secondary-container">
+      <div class="size-text-container" id="eggs-section"></div>
+      <div class="choose-desired-egg-size">
+        <% @eggs.each do |egg| %>
+          <div class="egg-size">
+            <div class="size-image">
+              <% if egg.size == 'Small' %>
+                <div class="size-text-small egg-image">
+                  <div class="small-h2-text"><h2>Small</h2></div>
+                  <div class="small-image-egg-container"><%= image_tag 'egg.png', class: 'egg-image' %></div>
+                </div>
+              <% elsif egg.size == 'Medium' %>
+                <div class="size-text-medium egg-image">
+                  <div class="medium-h2-text"><h2>Medium</h2></div>
+                  <div class="medium-image-egg-container"><%= image_tag 'egg.png', class: 'egg-image' %></div>
+                </div>
+              <% elsif egg.size == 'Large' %>
+                <div class="size-text-large egg-image">
+                  <div class="large-h2-text"><h2>Large</h2></div>
+                  <div class="large-image-egg-container"><%= image_tag 'egg.png', class: 'egg-image' %></div>
+                </div>
+              <% end %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 
-
-
-<!--
-<div class="main-container">
-  <div class="choose-egg-size-text-container">
-    <h1>Choose your desired size.</h1>
-  </div>
-  <div class="secondary-container">
-    <div class="size-text-container">
-      <div class="size-text small">Small</div>
-      <div class="size-text medium">Medium</div>
-      <div class="size-text large">Large</div>
-    </div>
-    <div class="choose-desired-egg-size">
-      <% @eggs.each do |egg| %>
-        <div class="egg-size">
-          <div class="size-image">
-            <% if egg.size == 'Small' %>
-              <%= image_tag 'egg.png', class: 'egg-image' %>
-            <% elsif egg.size == 'Medium' %>
-              <%= image_tag 'egg.png', class: 'egg-image' %>
-            <% elsif egg.size == 'Large' %>
-              <%= image_tag 'egg.png', class: 'egg-image'%>
-            <% end %>
+  <div class="main-container">
+    <div class="temperature-section-container">
+      <div class="choose-temperature-of-egg">
+        <% if @room_temp %>
+          <div class="room-temperature-text-image temp-image">
+            <div class="text-for-temperature">Room temperature</div>
+            <div class="image-background-for-room-temp"><%= image_tag 'background.png', class: 'temp-image' %></div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+
+        <% if @fridge_temp %>
+          <div class="fridge-temperature-text-image temp-image">
+            <div class="text-for-temperature">Fridge temperature</div>
+            <div class="image-fridge-for-fridge-temp"><%= image_tag 'fridge.png', class: 'temp-image' %></div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="text-for-temperature-container">
-    <div class="text-for-temperature">Room temperature</div>
-    <div class="text-for-temperature">Fridge temperature</div>
+
+  <div class="main-container">
+    <div class="boiling-point-container">
+      <div class="image-athmospheric-presure-container">
+        <% if @sea_level %>
+          <div class="sea-level-text-image atm-presure-image">
+            <div class="text-for-presure">Sea Level</div>
+            <div class="image-sea-level-for-presure"><%= image_tag 'sea-level.png', class: "atm-presure-image" %></div>
+          </div>
+        <% end %>
+
+        <% if @altitude %>
+          <div class="altitude-text-image atm-presure-image">
+            <div class="text-for-presure">Altitude</div>
+            <div class="image-altitude-for-presure"></div><%= image_tag 'altitude.png', class: "atm-presure-image" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="result-container">
+      <div class="results-btn-container">
+        <%= link_to "Results", "#result" , class: "btn btn-success", id: "button-result"  %>
+      </div>
+      <div class="results-calculation-container">
+        <p id="result" class="d-none"></p>
+      </div>
+    </div>
   </div>
-
-  <div class="choose-temperature-of-egg">
-
-    <% if @room_temp %>
-      <%= image_tag 'room.png', class: 'temp-image' %>
-    <% end %>
-
-    <% if @fridge_temp.present? %>
-      <%= image_tag 'fridge.png', class: 'temp-image' %>
-    <% end %>
-  </div>
-
-  <div class="boiling-point-container">
-
 </div>
 
-
-
-
-
 <script>
+
+  const presureElement = document.querySelector('#presure-result');
+
+  let presureImage = document.querySelectorAll(".atm-presure-image")
+  let selectedImagePressure = null;
+  let presureChoice = null;
+
+
+  presureImage.forEach(function(image) {
+    image.addEventListener('click', function() {
+      if (this === selectedImagePressure) {
+        this.classList.remove('highlighted')
+        selectedImagePressure = null;
+      } else {
+        presureImage.forEach(function(image)  {
+          image.classList.remove('highlighted')
+        });
+
+        this.classList.add('highlighted');
+        selectedImagePressure = this;
+
+        if (selectedImagePressure !== null) {
+          let parentElement = selectedImagePressure.parentElement
+          while (parentElement && !parentElement.classList.contains('image-athmospheric-presure-container')) {
+            parentElement = parentElement.parentElement
+          }
+
+          if (parentElement) {
+            if (parentElement.querySelector('.sea-level-text-image')) {
+              presureChoice = "Sea Level"
+            } else if (parentElement.querySelector('.altitude-text-image')) {
+              presureChoice = "Altitude"
+            }
+          }
+        }
+      }
+
+      presureElement.textContent = presureChoice;
+    });
+  });
+
+
   let eggImages = document.querySelectorAll('.egg-image');
-  let selectedImage = null;
+  let selectedEggImage = null;
+  let eggSize = null;
 
   eggImages.forEach(function(image) {
     image.addEventListener('click', function() {
-      if (this === selectedImage) {
+      if (this === selectedEggImage) {
         this.classList.remove('highlighted');
-        selectedImage = null;
+        selectedEggImage = null;
       } else {
         eggImages.forEach(function(image) {
           image.classList.remove('highlighted');
         });
 
         this.classList.add('highlighted');
-        selectedImage = this;
-      }
+        selectedEggImage = this;
+
+        if (selectedEggImage !== null) {
+          let parentElement = selectedEggImage.parentElement;
+          while (parentElement && !parentElement.classList.contains('egg-size')) {
+            parentElement = parentElement.parentElement;
+          };
+
+          if (parentElement) {
+            if (parentElement.querySelector('.size-text-small')) {
+              eggSize = "Small"
+            } else if (parentElement.querySelector('.size-text-medium')) {
+              eggSize = "Medium"
+            } else if (parentElement.querySelector('.size-text-large')) {
+              eggSize = "Large"
+            };
+          };
+        };
+      };
+
+      const eggResultElement = document.querySelector('#egg-result');
+
+      eggResultElement.textContent = eggSize;
     });
   });
 
+  const tempElement = document.querySelector('#temp-result');
 
   let temperatureImage = document.querySelectorAll(".temp-image")
-  let selectedImagee = null;
+  let selectedImageTemperature = null;
+  let tempChoice = null;
 
   temperatureImage.forEach(function(image) {
-    image.addEventListener("click", function() {
-      if (this === selectedImagee) {
+    image.addEventListener('click', function() {
+      if (this === selectedImageTemperature) {
         this.classList.remove('highlighted')
-        selectedImagee = null;
+        selectedImageTemperature = null;
       } else {
         temperatureImage.forEach(function(image)  {
           image.classList.remove('highlighted')
         });
 
         this.classList.add('highlighted');
-        selectedImage = this;
-      }
+        selectedImageTemperature = this;
+
+        if (selectedImageTemperature !== null) {
+          let parentElement = selectedImageTemperature.parentElement;
+          while (parentElement && !parentElement.classList.contains('choose-temperature-of-egg')) {
+            parentElement = parentElement.parentElement;
+          };
+
+          if (parentElement) {
+            if (parentElement.querySelector('.room-temperature-text-image')) {
+              tempChoice = "Room temperature"
+            } else if (parentElement.querySelector('.fridge-temperature-text-image')) {
+              tempChoice = "Fridge temperature"
+            };
+          };
+        };
+      };
+
+      tempElement.textContent = tempChoice;
     });
   });
+
+
+  let resultButton = document.getElementById("button-result");
+  let resultElement = document.getElementById("result");
+
+  resultButton.addEventListener("click", function() {
+    resultElement.classList.remove("d-none");
+  });
+
+
+  let calculateButton = document.getElementById("button-result");
+
+  calculateButton.addEventListener('click', function(event) {
+  event.preventDefault();
+
+  if (selectedEggImage === null || selectedImageTemperature === null || selectedImagePressure === null) {
+    alert("Please select all the options to get the result.");
+  } else {
+
+    let boilingPoint = null;
+
+    if (presureChoice === "Sea Level") {
+      if (tempElement.textContent === "Room temperature") {
+        if (eggResultElement.textContent === "Small") {
+          boilingPoint = "5-6 minutes";
+        } else if (eggResultElement.textContent === "Medium") {
+          boilingPoint = "7-8 minutes";
+        } else if (eggResultElement.textContent === "Large") {
+          boilingPoint = "9-10 minutes";
+        }
+      } else if (tempElement.textContent === "Fridge temperature") {
+        if (eggResultElement.textContent === "Small") {
+          boilingPoint = "6-7 minutes";
+        } else if (eggResultElement.textContent === "Medium") {
+          boilingPoint = "9-10 minutes";
+        } else if (eggResultElement.textContent === "Large") {
+          boilingPoint = "11-12 minutes";
+        }
+      }
+    } else if (presureChoice === "Altitude") {
+      if (tempElement.textContent === "Room temperature") {
+        if (eggResultElement.textContent === "Small") {
+          boilingPoint = "8-9 minutes";
+        } else if (eggResultElement.textContent === "Medium") {
+          boilingPoint = "10-11 minutes";
+        } else if (eggResultElement.textContent === "Large") {
+          boilingPoint = "12-13 minutes";
+        }
+      } else if (tempElement.textContent === "Fridge temperature") {
+        if (eggResultElement.textContent === "Small") {
+          boilingPoint = "9-10 minutes";
+        } else if (eggResultElement.textContent === "Medium") {
+          boilingPoint = "11-12 minutes";
+        } else if (eggResultElement.textContent === "Large") {
+          boilingPoint = "13-14 minutes";
+        }
+      }
+    }
+
+    let resultText = document.getElementById("result");
+    resultText.innerText = `To cook a ${eggResultElement.textContent} egg at ${tempElement.textContent} and at ${presureElement.textContent}, boil the egg for ${boilingPoint}.`;
+    resultText.classList.remove("d-none");
+  }
+});
 </script>

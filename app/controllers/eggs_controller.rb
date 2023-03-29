@@ -1,7 +1,12 @@
 class EggsController < ApplicationController
-
   def index
     @eggs = Egg.all
+    @temperatures = Temperature.last
+    @room_temp = @temperatures.room_temp
+    @fridge_temp = @temperatures.fridge_temp
+    @presures = Presure.last
+    @sea_level = @presures.sea_level
+    @altitude = @presures.altitude
   end
 
   def show

@@ -1,4 +1,12 @@
+.main-container-for-eggs {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
 .secondary-container {
+  margin-top: 100px;
   border: 1px solid black;
   border-radius: 10px;
   box-shadow: 1px 3px 3px 3px rgb(163, 163, 163);
@@ -34,4 +42,8 @@
 
 .highlighted {
   border: 2px solid red;
+}
+
+.text-for-selecting-your-egg-size {
+  text-align: center;
 }

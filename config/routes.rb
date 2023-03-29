@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :eggs, only: [:index, :show, :create, :new]
   resources :temperatures
   resources :presures, only: [:index, :show, :create, :new]
+  resources :results, only: [:index]
 end

@@ -1,0 +1,37 @@
+<%# <script>
+  let eggImages = document.querySelectorAll('.egg-image');
+  let selectedEggImage = null;
+  let eggSize = null;
+
+  eggImages.forEach(function(image) {
+    image.addEventListener('click', function() {
+      if (this === selectedEggImage) {
+        this.classList.remove('highlighted');
+        selectedEggImage = null;
+      } else {
+        eggImages.forEach(function(image) {
+          image.classList.remove('highlighted');
+        });
+
+        this.classList.add('highlighted');
+        selectedEggImage = this;
+
+        if (selectedEggImage !== null) {
+          if (selectedEggImage.classList.contains("Small")) {
+            eggSize = "Small"
+          } else if (selectedEggImage.classList.contains("Medium")) {
+            eggSize = "Medium"
+          } else if (selectedEggImage.classList.contains("Large")) {
+            eggSize = "Large"
+          }
+        }
+      }
+
+      // Select the element where you want to display the result
+      const resultElement = document.querySelector('#result');
+
+      // Update the text content of the result element with the value of the eggSize variable
+      resultElement.textContent = eggSize;
+    });
+  });
+</script> %>

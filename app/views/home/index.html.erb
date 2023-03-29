@@ -11,9 +11,6 @@
 
     <div class="first-image-how-it-works-container">
       <img src="<%= image_path 'white-egg.png' %>" alt="">
-      <%# <div class="marketing-description-title">
-        <h3>Size</h3>
-      </div> %>
       <div class="marketing-description-body">
         <p>First, you'll need to select the size of the egg you're boiling. This is important because the size of the egg will affect how long it takes to boil. If you're not sure what size your egg is, you can usually find this information on the egg carton.</p>
       </div>
@@ -21,9 +18,6 @@
 
     <div class="second-image-how-it-works-container">
       <img src="<%= image_path 'temp.png' %>" alt="">
-      <%# <div class="marketing-description-title">
-        <h3>Take our quiz</h3>
-      </div> %>
       <div class="marketing-description-body">
         <p>Next, you'll need to select the temperature of the egg you are going to boil. This step is crucial, as the temperature of the egg will determine how long it takes to boil the egg. If the egg is taken from a room temperature it will take less time to boil.</p>
       </div>
@@ -31,9 +25,6 @@
 
     <div class="third-image-how-it-works-container">
       <img src="<%= image_path 'presure.png' %>" alt="">
-      <%# <div class="marketing-description-title">
-        <h3>Take our quiz</h3>
-      </div> %>
       <div class="marketing-description-body">
         <p>After selecting the temperature of the egg, the next step is to consider the atmospheric pressure at which you'll be cooking your egg. This may sound complicated, but don't worry – it simply means taking into account your altitude.</p>
       </div>
@@ -43,28 +34,3 @@
     <%= link_to "Let's start", eggs_path, class:"btn btn-success" %>
   </div>
 </div>
-
-
-
-
-
-<script>
-  let eggImages = document.querySelectorAll('.egg-image');
-  let selectedImage = null;
-
-  eggImages.forEach(function(image) {
-    image.addEventListener('click', function() {
-      if (this === selectedImage) {
-        this.classList.remove('highlighted');
-        selectedImage = null;
-      } else {
-        eggImages.forEach(function(image) {
-          image.classList.remove('highlighted');
-        });
-
-        this.classList.add('highlighted');
-        selectedImage = this;
-      }
-    });
-  });
-</script>
