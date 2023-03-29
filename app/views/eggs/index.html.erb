@@ -76,7 +76,11 @@
         <%= link_to "Results", "#result" , class: "btn btn-success", id: "button-result"  %>
       </div>
       <div class="results-calculation-container">
-        <p id="result" class="d-none"></p>
+        <p id="result" class="d-none">
+          <p id="egg-result" class="d-none"></p>
+          <p id="temp-result" class="d-none"></p>
+          <p id="presure-result" class="d-none"></p>
+        </p>
       </div>
     </div>
   </div>
@@ -128,6 +132,7 @@
   let eggImages = document.querySelectorAll('.egg-image');
   let selectedEggImage = null;
   let eggSize = null;
+  let eggResultElement = null;
 
   eggImages.forEach(function(image) {
     image.addEventListener('click', function() {
@@ -160,7 +165,7 @@
         };
       };
 
-      const eggResultElement = document.querySelector('#egg-result');
+      eggResultElement = document.querySelector('#egg-result');
 
       eggResultElement.textContent = eggSize;
     });
