@@ -1,9 +1,11 @@
 <%= form_with(model: @presure) do |f|%>
-  <%= f.label :sea_level %>
-  <%= f.text_field :sea_level %>
 
-  <%= f.label :altitude %>
-  <%= f.text_field :altitude %>
+  <div class="field">
+    <%= f.label :atmo_presure %>
+    <%= f.select :atmo_presure, ['Sea level', "Altitude"] %>
+  </div>
 
-  <%= f.submit %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

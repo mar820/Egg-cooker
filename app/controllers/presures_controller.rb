@@ -1,8 +1,6 @@
 class PresuresController < ApplicationController
   def index
-    @presures = Presure.last
-    @sea_level = @presures.sea_level
-    @altitude = @presures.altitude
+    @presures = Presure.all
   end
 
   def show
@@ -15,6 +13,7 @@ class PresuresController < ApplicationController
 
   def create
     @presure = Presure.new(presure_params)
+    @presure.atmo_presure = params[:presure][:atmo_presure]
     if @presure.save
       redirect_to presures_path
     else
@@ -25,6 +24,6 @@ class PresuresController < ApplicationController
   private
 
   def presure_params
-    params.require(:presure).permit(:sea_level, :altitude)
+    params.require(:presure).permit(:atmo_presure)
   end
 end

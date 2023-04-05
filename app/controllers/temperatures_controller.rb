@@ -1,9 +1,7 @@
 class TemperaturesController < ApplicationController
 
   def index
-    @temperatures = Temperature.last
-    @room_temp = @temperatures.room_temp
-    @fridge_temp = @temperatures.fridge_temp
+    @temperatures = Temperature.all
   end
 
   def show
@@ -16,6 +14,7 @@ class TemperaturesController < ApplicationController
 
   def create
     @temperature = Temperature.new(temperature_params)
+    @temperature.ambient_temp = params[:temperature][:ambient_temp]
     if @temperature.save
       redirect_to temperatures_path
     else
@@ -26,6 +25,6 @@ class TemperaturesController < ApplicationController
   private
 
   def temperature_params
-    params.require(:temperature).permit(:fridge_temp, :room_temp)
+    params.require(:temperature).permit(:ambient_temp)
   end
 end

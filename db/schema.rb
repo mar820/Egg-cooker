@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_25_201243) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_31_165607) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,10 +21,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_25_201243) do
   end
 
   create_table "presures", force: :cascade do |t|
-    t.string "sea_level"
-    t.string "altitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "atmo_presure"
   end
 
   create_table "results", force: :cascade do |t|
@@ -34,10 +33,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_25_201243) do
   end
 
   create_table "temperatures", force: :cascade do |t|
-    t.string "fridge_temp"
-    t.string "room_temp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ambient_temp"
   end
 
   create_table "users", force: :cascade do |t|

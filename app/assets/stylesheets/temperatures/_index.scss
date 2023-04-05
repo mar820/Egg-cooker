@@ -1,29 +1,63 @@
-.text-for-temperature-container {
-  display: flex;
-  justify-content: space-between;
-  width: 690px;
-  margin: 40px auto;
+.text-for-temperature{
   font-size: 25px;
   font-weight: 500;
-
-  .text-for-temperature{
-    padding-right: 15px;
-  }
+  padding-left: 10px;
 }
+
 
 .choose-temperature-of-egg {
   display: flex;
-  justify-content: space-between;
-  width: 750px;
+  justify-content: center;
+  flex-direction: column;
+  width: 415px;
 
   img {
-    width: 350px;
-    height: 380px;
+    width: 100px;
+    height: 120px;
     border-radius: 20%;
     background-size:cover ;
   }
 }
 
 .temperature-section-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  flex-direction: column;
+  // border: 5px solid #3F497F;
+  // padding: 10px;
+  // border-radius: 15px;
+  width: 600px;
+  height: 100%;
+}
+
+.text-for-temperature-container {
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.fridge-temperature-text-image {
+  padding: 20px 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #3F4975;
+  transition: all 0.3s ease; /* adding a transition for smooth effect */
+
+  .fridge-temperature-text-image:hover {
+    background-color: #3F4975;
+    color: #FFFFFF;
+  }
+}
+
+.room-temperature-text-image {
+  padding: 20px 10px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #3F4975;
 }

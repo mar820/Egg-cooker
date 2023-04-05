@@ -1,6 +1,6 @@
 <div class="first-part-eggs-choices-container" class="d-none">
   <div class="text-for-selecting-your-egg-size">
-    <h3>Start by selecting the size of your egg.</h3>
+    <h3>Let's start by selecting the size of your egg.</h3>
   </div>
   <div class="main-container-for-eggs">
     <div class="secondary-container">
@@ -11,18 +11,18 @@
             <div class="size-image">
               <% if egg.size == 'Small' %>
                 <div class="size-text-small egg-image">
-                  <div class="small-h2-text"><h2>Small</h2></div>
                   <div class="small-image-egg-container"><%= image_tag 'egg.png', class: 'egg-image' %></div>
+                  <div class="small-h2-text"><h2>Small</h2></div>
                 </div>
               <% elsif egg.size == 'Medium' %>
                 <div class="size-text-medium egg-image">
-                  <div class="medium-h2-text"><h2>Medium</h2></div>
                   <div class="medium-image-egg-container"><%= image_tag 'egg.png', class: 'egg-image' %></div>
+                  <div class="medium-h2-text"><h2>Medium</h2></div>
                 </div>
               <% elsif egg.size == 'Large' %>
                 <div class="size-text-large egg-image">
-                  <div class="large-h2-text"><h2>Large</h2></div>
                   <div class="large-image-egg-container"><%= image_tag 'egg.png', class: 'egg-image' %></div>
+                  <div class="large-h2-text"><h2>Large</h2></div>
                 </div>
               <% end %>
             </div>
@@ -31,56 +31,78 @@
       </div>
     </div>
   </div>
-
-  <div class="main-container">
-    <div class="temperature-section-container">
-      <div class="choose-temperature-of-egg">
-        <% if @room_temp %>
-          <div class="room-temperature-text-image temp-image">
-            <div class="text-for-temperature">Room temperature</div>
-            <div class="image-background-for-room-temp"><%= image_tag 'background.png', class: 'temp-image' %></div>
+  <div class="main-container-for-temperature-options">
+    <div class="text-for-temperature-container">
+      <h3>Now let's select the temperature that the egg was stored.</h3>
+    </div>
+    <div class="main-container">
+      <div class="temperature-section-container">
+        <% @temperatures.each do |temperature|  %>
+          <div class="choose-temperature-of-egg">
+            <% if temperature.ambient_temp == 'fridge_temp' %>
+              <div class="fridge-temperature-text-image temp-image">
+                <div class="image-fridge-for-fridge-temp"><%= image_tag 'fridge.png', class: 'temp-image' %></div>
+                <div class="text-for-temperature">Fridge temperature</div>
+              </div>
+            <% elsif temperature.ambient_temp == 'room_temp' %>
+              <div class="room-temperature-text-image temp-image">
+                <div class="image-background-for-room-temp"><%= image_tag 'background.png', class: 'temp-image' %></div>
+                <div class="text-for-temperature">Room temperature</div>
+              </div>
+            <% end %>
           </div>
         <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="main-container-for-presure-options">
+    <div class="text-for-presure-container">
+      <h3>Select the atmospheric pressure under which the egg is being cooked.</h3>
+    </div>
 
-        <% if @fridge_temp %>
-          <div class="fridge-temperature-text-image temp-image">
-            <div class="text-for-temperature">Fridge temperature</div>
-            <div class="image-fridge-for-fridge-temp"><%= image_tag 'fridge.png', class: 'temp-image' %></div>
+    <div class="information-about-presure-container">
+      <a href="#" class="button">Why presure</a>
+    </div>
+    <div class="main-container">
+      <div class="boiling-point-container">
+        <% @presures.each do |presure| %>
+          <div class="image-athmospheric-presure-container">
+            <% if presure.atmo_presure == 'Sea level'%>
+              <div class="sea-level-text-image atm-presure-image">
+                <div class="image-sea-level-for-presure"><%= image_tag 'sea-level.png', class: "atm-presure-image" %></div>
+                <div class="text-for-presure">Sea level</div>
+              </div>
+            <% elsif presure.atmo_presure == 'Altitude' %>
+              <div class="altitude-text-image atm-presure-image">
+                <div class="image-altitude-for-presure"></div><%= image_tag 'altitude.png', class: "atm-presure-image" %>
+                <div class="text-for-presure">Altitude</div>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>
     </div>
   </div>
 
-  <div class="main-container">
-    <div class="boiling-point-container">
-      <div class="image-athmospheric-presure-container">
-        <% if @sea_level %>
-          <div class="sea-level-text-image atm-presure-image">
-            <div class="text-for-presure">Sea Level</div>
-            <div class="image-sea-level-for-presure"><%= image_tag 'sea-level.png', class: "atm-presure-image" %></div>
-          </div>
-        <% end %>
-
-        <% if @altitude %>
-          <div class="altitude-text-image atm-presure-image">
-            <div class="text-for-presure">Altitude</div>
-            <div class="image-altitude-for-presure"></div><%= image_tag 'altitude.png', class: "atm-presure-image" %>
-          </div>
-        <% end %>
-      </div>
+  <div class="result-container">
+    <div class="results-btn-container">
+      <%= link_to "Results", "#result" , class: "btn btn-success", id: "button-result"  %>
     </div>
-
-    <div class="result-container">
-      <div class="results-btn-container">
-        <%= link_to "Results", "#result" , class: "btn btn-success", id: "button-result"  %>
-      </div>
-      <div class="results-calculation-container">
-        <p id="result" class="d-none">
+    <div class="result-container-for-soft-boiled-and-hard-boiled-egg">
+      <div id="result" class="main-container-for-boiling-soft-egg-results d-none">
+        <div class="results-calculation-container">
           <p id="egg-result" class="d-none"></p>
           <p id="temp-result" class="d-none"></p>
           <p id="presure-result" class="d-none"></p>
-        </p>
+        </div>
+      </div>
+      <div id="result-hard" class="main-container-for-boiling-hard-egg-results d-none">
+        <div class="second-results-calculation-container">
+          <h3>Hard Boiled</h3>
+          <p id="egg-result-hard" class="d-none"></p>
+          <p id="temp-result-hard" class="d-none"></p>
+          <p id="presure-result-hard" class="d-none"></p>
+        </div>
       </div>
     </div>
   </div>
@@ -88,7 +110,7 @@
 
 <script>
 
-  const presureElement = document.querySelector('#presure-result');
+  let presureElement = document.querySelector('#presure-result');
 
   let presureImage = document.querySelectorAll(".atm-presure-image")
   let selectedImagePressure = null;
@@ -228,49 +250,76 @@
     alert("Please select all the options to get the result.");
   } else {
 
-    let boilingPoint = null;
+    let softBoiled = null;
+    let hardBoiled = null;
 
-    if (presureChoice === "Sea Level") {
+    if (eggResultElement.textContent === "Small") {
       if (tempElement.textContent === "Room temperature") {
-        if (eggResultElement.textContent === "Small") {
-          boilingPoint = "5-6 minutes";
-        } else if (eggResultElement.textContent === "Medium") {
-          boilingPoint = "7-8 minutes";
-        } else if (eggResultElement.textContent === "Large") {
-          boilingPoint = "9-10 minutes";
-        }
+        if (presureElement.textContent === "Sea Level") {
+          softBoiled = "3-4";
+          hardBoiled = "7-8";
+        } else if (presureElement.textContent === "Altitude") {
+          softBoiled = "4-5";
+          hardBoiled = "9-10";
+        };
       } else if (tempElement.textContent === "Fridge temperature") {
-        if (eggResultElement.textContent === "Small") {
-          boilingPoint = "6-7 minutes";
-        } else if (eggResultElement.textContent === "Medium") {
-          boilingPoint = "9-10 minutes";
-        } else if (eggResultElement.textContent === "Large") {
-          boilingPoint = "11-12 minutes";
-        }
-      }
-    } else if (presureChoice === "Altitude") {
-      if (tempElement.textContent === "Room temperature") {
-        if (eggResultElement.textContent === "Small") {
-          boilingPoint = "8-9 minutes";
-        } else if (eggResultElement.textContent === "Medium") {
-          boilingPoint = "10-11 minutes";
-        } else if (eggResultElement.textContent === "Large") {
-          boilingPoint = "12-13 minutes";
-        }
-      } else if (tempElement.textContent === "Fridge temperature") {
-        if (eggResultElement.textContent === "Small") {
-          boilingPoint = "9-10 minutes";
-        } else if (eggResultElement.textContent === "Medium") {
-          boilingPoint = "11-12 minutes";
-        } else if (eggResultElement.textContent === "Large") {
-          boilingPoint = "13-14 minutes";
-        }
-      }
+        if (presureElement.textContent === "Sea Level") {
+          softBoiled = "8-9";
+          hardBoiled = "12-14";
+        } else if (presureElement.textContent === "Altitude") {
+          softBoiled = "10-12";
+          hardBoiled = "16-18";
+        };
+      };
     }
 
-    let resultText = document.getElementById("result");
-    resultText.innerText = `To cook a ${eggResultElement.textContent} egg at ${tempElement.textContent} and at ${presureElement.textContent}, boil the egg for ${boilingPoint}.`;
-    resultText.classList.remove("d-none");
+    if (eggResultElement.textContent === "Medium") {
+      if (tempElement.textContent === "Room temperature") {
+        if (presureElement.textContent === "Sea Level") {
+          softBoiled = "5-6";
+          hardBoiled = "9-12";
+        } else if (presureElement.textContent === "Altitude") {
+          softBoiled = "7-8";
+          hardBoiled = "12-14";
+        };
+      } else if (tempElement.textContent === "Fridge temperature") {
+        if (presureElement.textContent === "Sea Level") {
+          softBoiled = "7-8";
+          hardBoiled = "12-14";
+        } else if (presureElement.textContent === "Altitude") {
+          softBoiled = "9-10";
+          hardBoiled = "14-16";
+        };
+      };
+    }
+
+    if (eggResultElement.textContent === "Large") {
+      if (tempElement.textContent === "Room temperature") {
+        if (presureElement.textContent === "Sea Level") {
+          softBoiled = "7-8";
+          hardBoiled = "12-14";
+        } else if (presureElement.textContent === "Altitude") {
+          softBoiled = "9-10";
+          hardBoiled = "14-16";
+        };
+      } else if (tempElement.textContent === "Fridge temperature") {
+        if (presureElement.textContent === "Sea Level") {
+          softBoiled = "8-9";
+          hardBoiled = "12-14";
+        } else if (presureElement.textContent === "Altitude") {
+          softBoiled = "10-12";
+          hardBoiled = "16-18";
+        };
+      };
+    };
+
+    let resultTextSoft = document.getElementById("result");
+    resultTextSoft.innerText = `If you want to have a soft-boiled ${eggResultElement.textContent} sized egg at ${tempElement.textContent} and at ${presureElement.textContent}, boil the egg for ${softBoiled} minutes.`;
+    resultTextSoft.classList.remove("d-none")
+
+    let resultTextHard = document.getElementById("result-hard");
+    resultTextHard.innerText += `If you want to have a hard-boiled ${eggResultElement.textContent} sized egg at ${tempElement.textContent} and at ${presureElement.textContent}, boil the egg for ${hardBoiled} minutes.`;
+    resultTextHard.classList.remove("d-none");
   }
 });
 </script>
