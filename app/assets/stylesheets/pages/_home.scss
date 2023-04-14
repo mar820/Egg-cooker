@@ -20,7 +20,7 @@
   background-size: cover;
 
   h1 {
-    color: rgb(0, 0, 0);
+    color: #3F979B;
     font-size: 40px;
     font-weight: 800;
     font-family: 'Playfair Display', serif;
@@ -128,4 +128,42 @@
 
 .button-next-eggs-btn {
   margin-bottom: 100px;
+}
+
+
+@media only screen and (max-width: 550px) {
+  .welcome-egg-text-container {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .main-container {
+    width: 750px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .navbar {
+    width: 750px;
+  }
+}
+
+
+@media only screen and (max-width: 390px) {
+  .text-for-temperature-container {
+    width: 750px;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .first-part-eggs-choices-container {
+    width: 750px;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .navbar {
+    width: 750px;
+  }
 }

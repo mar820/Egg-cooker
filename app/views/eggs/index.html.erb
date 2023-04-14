@@ -1,6 +1,6 @@
 <div class="first-part-eggs-choices-container" class="d-none">
   <div class="text-for-selecting-your-egg-size">
-    <h3>Let's start by selecting the size of your egg.</h3>
+    <h3>Select your <span class="yellow-text">egg</span> size!</h3>
   </div>
   <div class="main-container-for-eggs">
     <div class="secondary-container">
@@ -11,18 +11,21 @@
             <div class="size-image">
               <% if egg.size == 'Small' %>
                 <div class="size-text-small egg-image">
-                  <div class="small-image-egg-container"><%= image_tag 'egg.png', class: 'egg-image' %></div>
-                  <div class="small-h2-text"><h2>Small</h2></div>
+                  <div class="small-image-egg-container">
+                    <div class="small-h2-text"><h2>S</h2></div>
+                  </div>
                 </div>
               <% elsif egg.size == 'Medium' %>
                 <div class="size-text-medium egg-image">
-                  <div class="medium-image-egg-container"><%= image_tag 'egg.png', class: 'egg-image' %></div>
-                  <div class="medium-h2-text"><h2>Medium</h2></div>
+                  <div class="medium-image-egg-container">
+                    <div class="medium-h2-text"><h2>M</h2></div>
+                  </div>
                 </div>
               <% elsif egg.size == 'Large' %>
                 <div class="size-text-large egg-image">
-                  <div class="large-image-egg-container"><%= image_tag 'egg.png', class: 'egg-image' %></div>
-                  <div class="large-h2-text"><h2>Large</h2></div>
+                  <div class="large-image-egg-container">
+                    <div class="large-h2-text"><h2>L</h2></div>
+                  </div>
                 </div>
               <% end %>
             </div>
@@ -98,7 +101,6 @@
       </div>
       <div id="result-hard" class="main-container-for-boiling-hard-egg-results d-none">
         <div class="second-results-calculation-container">
-          <h3>Hard Boiled</h3>
           <p id="egg-result-hard" class="d-none"></p>
           <p id="temp-result-hard" class="d-none"></p>
           <p id="presure-result-hard" class="d-none"></p>
@@ -115,7 +117,6 @@
   let presureImage = document.querySelectorAll(".atm-presure-image")
   let selectedImagePressure = null;
   let presureChoice = null;
-
 
   presureImage.forEach(function(image) {
     image.addEventListener('click', function() {
@@ -149,7 +150,6 @@
       presureElement.textContent = presureChoice;
     });
   });
-
 
   let eggImages = document.querySelectorAll('.egg-image');
   let selectedEggImage = null;
@@ -320,6 +320,6 @@
     let resultTextHard = document.getElementById("result-hard");
     resultTextHard.innerText += `If you want to have a hard-boiled ${eggResultElement.textContent} sized egg at ${tempElement.textContent} and at ${presureElement.textContent}, boil the egg for ${hardBoiled} minutes.`;
     resultTextHard.classList.remove("d-none");
-  }
-});
+    }
+  });
 </script>

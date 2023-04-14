@@ -7,18 +7,14 @@
 
 .secondary-container {
   margin-top: 50px;
-  border: 3px solid #3F497F;
-  border-radius: 10px;
-}
-
-.medium-image-egg-container {
-  margin-left: 30px;
+  // border: 3px solid #3F497F;
+  // border-radius: 10px;
 }
 
 .choose-desired-egg-size {
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
+  flex-direction: row;
   width: 600px;
 }
 
@@ -45,50 +41,83 @@
   font-weight: 500;
   // margin-top: 50px;
   margin-left: 75px;
+
 }
+
 
 .size-text-small {
-  padding: 0px 10px;
-  // margin-top: 20px;
+  padding: 15px 35px;
+  margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  // border: 2px solid #3F4975;
+  border: 2px solid #3F4975;
   transition: all 0.3s ease;
-  width: 600px;
+  // width: 110px;
+  border-radius: 20px;
+  background-color: rgb(200, 200, 200);
+
 }
 
+.small-h2-text h2 {
+  font-size: 70px;
+  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+}
+
+
 .size-text-medium {
-  // margin-left: 30px;
-  // margin-top: 20px;
+  padding: 15px 28px;
+  margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  // border: 2px solid #3F4975;
+  border: 2px solid #3F4975;
   transition: all 0.3s ease;
-  width: 600px;
+  // width: 110px;
+  border-radius: 20px;
+  background-color: rgb(200, 200, 200);
+
+}
+
+.medium-h2-text h2 {
+  font-size: 70px;
+  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+
+}
+.yellow-text {
+  color: yellow;
 }
 
 .size-text-large {
-  padding: 0px 10px;
-  // margin-top: 20px;
-  // margin-bottom: 20px;
+  padding: 15px 35px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  // border: 2px solid #3F4975;
+  border: 2px solid #3F4975;
   transition: all 0.3s ease;
-  width: 600px;
+  // width: 110px;
+  border-radius: 20px;
+  background-color: rgb(200, 200, 200);
+}
+
+.large-h2-text h2 {
+  font-size: 70px;
+  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
 }
 
 .highlighted {
   border: 2px solid #3F497F;
   border-radius: 15px;
-  background-color: #15202b;
+  background-color: #009FBD;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  background-color: #15202b;
+  // background-color: #15202b;
   color: #fff;
   transition: background-color 0.3s ease-in-out;
 }
@@ -103,9 +132,12 @@
   justify-content: center;
   text-align: center;
   align-items: center;
-  border: 2px solid black;
+  // border: 2px solid black;
   margin: auto;
-  background-color: #f6e28a;
+  // width: 1800px;
+  // background-color: #f6e28a;
+  background-color:rgba(200, 200, 200, 0.313);
+
 }
 
 .main-container-for-boiling-egg-results {
@@ -126,6 +158,12 @@
     box-shadow: 5px 5px 5px #d2a99e;
     text-align: center;
   }
+}
+
+.results-btn-container {
+  margin-top: 30px;
+  margin-bottom: 40px;
+
 }
 
 //
@@ -162,5 +200,46 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+
+
+
+
+@media only screen and (max-width: 550px) {
+  .text-for-temperature-container {
+    width: 750px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .first-part-eggs-choices-container {
+    width: 750px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .navbar {
+    width: 750px;
+  }
+}
+
+
+@media only screen and (max-width: 390px) {
+  .text-for-temperature-container {
+    width: 750px;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .first-part-eggs-choices-container {
+    width: 750px;
+  }
+}
+
+@media only screen and (max-width: 390px) {
+  .navbar {
+    width: 750px;
   }
 }
